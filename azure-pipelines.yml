@@ -1,0 +1,33 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+  
+variables:
+  buildConfiguration: 'release'
+
+steps:
+# - task: DotNetCoreCLI@2
+#   displayName: "Build StorageQueueProcessorV2"
+#   inputs:
+#     command: build
+#     projects: '**/StorageQueueProcessorV2.csproj'
+#     arguments: '--configuration $(buildConfiguration)'
+- task: DotNetCoreCLI@2
+  displayName: "Publish artifact to staging directory"
+  inputs:
+    command: publish
+    projects: '**/StorageQueueProcessorV2.csproj'
+    publishWebProjects: false
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: True
+- publish: $(Build.ArtifactStagingDirectory)
+  displayName: "Publish artifact to Azure Pipelines"
+  artifact: 'StorageQueueProcessorV2'
+- task: AzureWebApp@1
+  displayName: "Azure Web App Deployment"
+  inputs:
+    azureSubscription: 'a441b36f-83e5-4b8c-b1d5-b857313f06fb'
+    appName: 'WebJobsApp20200225052401'
+    package: $(Build.ArtifactStagingDirectory)
