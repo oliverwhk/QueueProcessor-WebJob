@@ -33,7 +33,7 @@ steps:
     appType: webApp
     azureSubscription: $(azureSubscription)
     webAppName: $(webAppName)
-    package: $(Build.ArtifactStagingDirectory)/**/*.zip
+    package: $(Build.ArtifactStagingDirectory)
     enableCustomDeployment: true
     removeAdditionalFilesFlag: true
     excludeFilesFromAppDataFlag: true
