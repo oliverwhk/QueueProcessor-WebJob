@@ -24,9 +24,9 @@ steps:
     publishWebProjects: false
     arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)\App_Data\Jobs\Triggered\StorageQueueProcessorV2'
     zipAfterPublish: false
-# - publish: $(Build.ArtifactStagingDirectory)
-#   displayName: "Publish artifact to Azure Pipelines"
-#   artifact: 'StorageQueueProcessorV2'
+- publish: $(Build.ArtifactStagingDirectory)
+  displayName: "Publish artifact to Azure Pipelines"
+  artifact: 'StorageQueueProcessorV2'
 - task: AzureRmWebAppDeployment@4
   displayName: 'Azure Web App Deployment'
   inputs:
