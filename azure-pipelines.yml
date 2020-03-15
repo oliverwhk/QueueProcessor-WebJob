@@ -35,5 +35,6 @@ steps:
     webAppName: $(webAppName)
     package: $(Build.ArtifactStagingDirectory)
     enableCustomDeployment: true
+    deploymentMethod: 'runFromPackage'
     removeAdditionalFilesFlag: true
     excludeFilesFromAppDataFlag: true
