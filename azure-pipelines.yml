@@ -25,9 +25,18 @@ steps:
 # - publish: $(Build.ArtifactStagingDirectory)
 #   displayName: "Publish artifact to Azure Pipelines"
 #   artifact: 'StorageQueueProcessorV2'
-- task: AzureWebApp@1
-  displayName: "Azure Web App Deployment"
+- task: AzureRmWebAppDeployment@4
+  displayName: 'Azure Web App Deployment'
   inputs:
+    appType: webApp
     azureSubscription: 'ServiceConnection-MSDN'
-    appName: 'example-storagequeue'
-    package: $(Build.ArtifactStagingDirectory)
+    webAppName: 'example-storagequeue'
+    package: $(Build.ArtifactStagingDirectory)/**/*.zip
+    enableCustomDeployment: true
+    removeAdditionalFilesFlag: true
+# - task: AzureWebApp@1
+#   displayName: "Azure Web App Deployment"
+#   inputs:
+#     azureSubscription: 'ServiceConnection-MSDN'
+#     appName: 'example-storagequeue'
+#     package: $(Build.ArtifactStagingDirectory)
