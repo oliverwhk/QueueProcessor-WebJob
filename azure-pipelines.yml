@@ -6,6 +6,8 @@ pool:
   
 variables:
   buildConfiguration: 'release'
+  azureSubscription: 'ServiceConnection-MSDN'
+  webAppName: 'example-storagequeue'
 
 steps:
 # - task: DotNetCoreCLI@2
@@ -29,8 +31,8 @@ steps:
   displayName: 'Azure Web App Deployment'
   inputs:
     appType: webApp
-    azureSubscription: 'ServiceConnection-MSDN'
-    webAppName: 'example-storagequeue'
+    azureSubscription: $(azureSubscription)
+    webAppName: $(webAppName)
     package: $(Build.ArtifactStagingDirectory)/**/*.zip
     enableCustomDeployment: true
     removeAdditionalFilesFlag: true
