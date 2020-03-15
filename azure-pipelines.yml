@@ -22,12 +22,12 @@ steps:
     publishWebProjects: false
     arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
-- publish: $(Build.ArtifactStagingDirectory)
-  displayName: "Publish artifact to Azure Pipelines"
-  artifact: 'StorageQueueProcessorV2'
+# - publish: $(Build.ArtifactStagingDirectory)
+#   displayName: "Publish artifact to Azure Pipelines"
+#   artifact: 'StorageQueueProcessorV2'
 - task: AzureWebApp@1
   displayName: "Azure Web App Deployment"
   inputs:
     azureSubscription: 'ServiceConnection-MSDN'
-    appName: 'WebJobsApp20200225052401'
+    appName: 'example-storagequeue'
     package: $(Build.ArtifactStagingDirectory)
