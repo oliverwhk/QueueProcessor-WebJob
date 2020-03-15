@@ -33,7 +33,7 @@ steps:
     appType: webApp
     azureSubscription: $(azureSubscription)
     webAppName: $(webAppName)
-    package: $(Build.ArtifactStagingDirectory)
+    package: $(Build.ArtifactStagingDirectory)\StorageQueueProcessorV2
     enableCustomDeployment: true
     deploymentMethod: 'runFromPackage'
     removeAdditionalFilesFlag: true
