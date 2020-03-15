@@ -22,7 +22,7 @@ steps:
     command: publish
     projects: '**/StorageQueueProcessorV2.csproj'
     publishWebProjects: false
-    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)\App_Data\Jobs\Triggered\StorageQueueProcessorV2'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)\App_Data\Jobs\Triggered'
     zipAfterPublish: false
 - publish: $(Build.ArtifactStagingDirectory)
   displayName: "Publish artifact to Azure Pipelines"
