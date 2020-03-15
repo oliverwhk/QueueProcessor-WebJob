@@ -28,6 +28,6 @@ steps:
 - task: AzureWebApp@1
   displayName: "Azure Web App Deployment"
   inputs:
-    azureSubscription: 'a441b36f-83e5-4b8c-b1d5-b857313f06fb'
+    azureSubscription: 'ServiceConnection-MSDN'
     appName: 'WebJobsApp20200225052401'
     package: $(Build.ArtifactStagingDirectory)
