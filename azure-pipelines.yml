@@ -28,7 +28,7 @@ steps:
 - task: AzureRmWebAppDeployment@4
   displayName: 'Azure Web App Deployment'
   inputs:
-    appType: webAppLinux
+    appType: webApp
     azureSubscription: 'ServiceConnection-MSDN'
     webAppName: 'example-storagequeue'
     package: $(Build.ArtifactStagingDirectory)/**/*.zip
