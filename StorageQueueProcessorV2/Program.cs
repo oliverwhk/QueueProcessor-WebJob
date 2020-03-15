@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using System.IO;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace StorageQueueProcessorV2
@@ -13,6 +15,14 @@ namespace StorageQueueProcessorV2
                 b.AddAzureStorageCoreServices();
                 b.AddAzureStorage();
             });
+            
+            builder.ConfigureAppConfiguration((context, c) =>
+            {
+                c.SetBasePath(Directory.GetCurrentDirectory())
+                 .AddJsonFile("appSettings.json", optional: false, reloadOnChange: true)
+                 .AddEnvironmentVariables();
+            });
+            
             builder.ConfigureLogging((context, b) =>
             {
                 b.AddConsole();
