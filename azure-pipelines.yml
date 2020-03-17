@@ -37,4 +37,4 @@ steps:
     enableCustomDeployment: true
     deploymentType: 'webDeploy'
     removeAdditionalFilesFlag: true
-    excludeFilesFromAppDataFlag: true
+    excludeFilesFromAppDataFlag: false
