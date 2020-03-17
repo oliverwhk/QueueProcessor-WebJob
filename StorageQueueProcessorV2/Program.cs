@@ -12,15 +12,11 @@ namespace StorageQueueProcessorV2
             var builder = new HostBuilder();
             builder.ConfigureWebJobs(b =>
             {
+                // WebJob is hooked to a storage account for persisting data
                 b.AddAzureStorageCoreServices();
+
+                // Storage binding
                 b.AddAzureStorage();
-            });
-            
-            builder.ConfigureAppConfiguration((context, c) =>
-            {
-                c.SetBasePath(Directory.GetCurrentDirectory())
-                 .AddJsonFile("appSettings.json", optional: false, reloadOnChange: true)
-                 .AddEnvironmentVariables();
             });
             
             builder.ConfigureLogging((context, b) =>
