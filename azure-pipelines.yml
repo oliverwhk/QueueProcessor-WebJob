@@ -7,7 +7,7 @@ pool:
 variables:
   buildConfiguration: 'release'
   azureSubscription: 'ServiceConnection-MSDN'
-  webAppName: 'example-storagequeue'
+  webAppName: 'WebJobsApp20200316103100'
 
 steps:
 # - task: DotNetCoreCLI@2
@@ -22,7 +22,7 @@ steps:
     command: publish
     projects: '**/StorageQueueProcessorV2.csproj'
     publishWebProjects: false
-    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)\App_Data\Jobs\Triggered'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)\App_Data\Jobs\Continuous'
     zipAfterPublish: false
 - publish: $(Build.ArtifactStagingDirectory)
   displayName: "Publish artifact to Azure Pipelines"
