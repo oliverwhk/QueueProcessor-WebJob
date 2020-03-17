@@ -22,11 +22,11 @@ steps:
     command: publish
     projects: '**/StorageQueueProcessorV2.csproj'
     publishWebProjects: false
-    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)\App_Data\Jobs\Continuous'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)\app_data\jobs\continuous'
     zipAfterPublish: false
 - publish: $(Build.ArtifactStagingDirectory)
   displayName: "Publish artifact to Azure Pipelines"
-  artifact: 'StorageQueueProcessorV2'
+  artifact: 'StorageQueueProcessor'
 - task: AzureRmWebAppDeployment@4
   displayName: 'Azure Web App Deployment'
   inputs:
