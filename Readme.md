@@ -1,4 +1,5 @@
 ## Note
+- Need app service to run in Windows OS because web jobs are not supported currently in Linux OS.
 - For continuous web jobs, enable 'Always On' the app service
 
 ## Reference
