@@ -7,7 +7,7 @@ pool:
 variables:
   buildConfiguration: 'release'
   azureSubscription: 'ServiceConnection-MSDN'
-  resourceGroup: 'test-infra-rg'
+  resourceGroup: 'queueprocessor-rg'
   storageAccountName: 'storagequeue20200322'
   storageQueueName: 'queue1'
   appServicePlan: 'default-plan'
