@@ -20,7 +20,7 @@ steps:
     azureSubscription: $(azureSubscription)
     scriptType: ps
     scriptPath: '$(System.DefaultWorkingDirectory)/.pipeline/ops/setup-environment.ps1'
-    arguments: '-resourceGroup $(resourceGroup) -storageAccountName $(storageAccountName) -appServicePlan $(appServicePlan) -webAppName $(webAppName)'
+    arguments: '-resourceGroup $(resourceGroup) -storageAccountName $(storageAccountName) -storageQueueName $(storageQueueName) -appServicePlan $(appServicePlan) -webAppName $(webAppName)'
 - task: DotNetCoreCLI@2
   displayName: "Publish artifact to staging directory"
   inputs:
