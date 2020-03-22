@@ -7,15 +7,20 @@ pool:
 variables:
   buildConfiguration: 'release'
   azureSubscription: 'ServiceConnection-MSDN'
-  webAppName: 'WebJobsApp20200316103100'
+  resourceGroup: 'test-infra-rg'
+  storageAccountName: 'storagequeue20200322'
+  storageQueueName: 'queue1'
+  appServicePlan: 'default-plan'
+  webAppName: 'WebJobsApp20200322'
 
 steps:
-# - task: DotNetCoreCLI@2
-#   displayName: "Build StorageQueueProcessorV2"
-#   inputs:
-#     command: build
-#     projects: '**/StorageQueueProcessorV2.csproj'
-#     arguments: '--configuration $(buildConfiguration)'
+- task: AzureCLI@2
+  displayName: Set up environment
+  inputs:
+    azureSubscription: $(azureSubscription)
+    scriptType: ps
+    scriptPath: '$(System.DefaultWorkingDirectory)/.pipeline/ops/setup-environment.ps1'
+    arguments: '-resourceGroup $(resourceGroup) -storageAccountName $(storageAccountName) -appServicePlan $(appServicePlan) -webAppName $(webAppName)'
 - task: DotNetCoreCLI@2
   displayName: "Publish artifact to staging directory"
   inputs:
